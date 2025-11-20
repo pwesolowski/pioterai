@@ -45,7 +45,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 </p>
             </div>
             <hr className="my-8" />
-            <div className="prose prose-zinc dark:prose-invert max-w-none">
+            <div className="prose max-w-none prose-headings:!text-foreground prose-p:!text-foreground prose-li:!text-foreground prose-strong:!text-foreground prose-a:!text-foreground">
                 <MDXRemote source={post.content} />
             </div>
         </article>

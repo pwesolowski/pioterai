@@ -112,6 +112,11 @@
   body {
     @apply bg-background text-foreground antialiased;
   }
+
+  /* Force prose content to use the theme foreground color */
+  .prose :where(h1, h2, h3, h4, h5, h6, p, li, strong, a, blockquote) {
+    color: var(--foreground) !important;
+  }
 }
 
 @utility container {
