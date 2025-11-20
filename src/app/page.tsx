@@ -9,7 +9,7 @@ import IntroBanner from "@/components/IntroBanner";
 export default function Home() {
     return (
         <div className="flex flex-col items-center w-full">
-            <div className="w-full max-w-5xl px-4 pt-24">
+            <div className="container px-4 md:px-6 pt-24">
                 <IntroBanner />
             </div>
             {/* Hero Section */}
