@@ -27,23 +27,27 @@ const pl = {
     ctaCaseStudies: "Zobacz case studies",
     ctaNewsletter: "Zapisz się na newsletter",
     proofLabel: "W praktyce",
-    // przykładowe dane w animacji hero — ilustracja, nie case klienta
-    demo: {
-      badge: "demo",
-      file: "wz_zdjecie.jpg",
-      register: "Rejestr WZ",
-      rows: [
-        ["Kruszywo 0–16", "24 t"],
-        ["Piasek płukany", "18 t"],
-        ["Transport", "2 kursy"],
+    /** etykiety na orbitach wokół zdjęcia w hero */
+    orbit: { inner: ["LLM", "Claude", "MCP"], outer: ["Agenci", "Skills", "RAG", "Prompty"] },
+    // sekcja „opowieść o AI” na stronie głównej
+    story: {
+      heading: "Co AI może zrobić w Twojej firmie.",
+      intro: "Cztery klocki, z których buduję wdrożenia.",
+      items: [
+        { key: "llm", title: "LLM.", text: "Modele językowe rozumieją tekst, obrazy i dane. Fundament każdego wdrożenia." },
+        { key: "agents", title: "Agenci AI.", text: "Wykonują całe zadania od początku do końca — nie tylko odpowiadają na pytania." },
+        { key: "skills", title: "Claude Skills.", text: "Wiedza i procedury Twojej firmy zapisane tak, żeby AI robiło to po Waszemu." },
+        { key: "mcp", title: "MCP.", text: "AI podłączone do Twoich systemów i danych — bez kopiowania do czatu." },
       ],
-      steps: ["Odczyt", "Pozycje", "Kontrola", "Zapis"],
+      ctaCaseStudies: "Zobacz to we wdrożeniach",
+      ctaBlog: "Czytaj na blogu",
     },
   },
 
   caseStudies: {
     heading: "Case studies",
     intro: "Problem. Rozwiązanie. Efekt.",
+    metaDescription: "Wdrożenia AI w polskich firmach: problem, rozwiązanie i mierzalny efekt — agenci, Claude Skills, MCP i automatyzacja dokumentów.",
     problem: "Problem",
     solution: "Rozwiązanie",
     result: "Efekt",
@@ -187,22 +191,25 @@ const en: Dictionary = {
     ctaCaseStudies: "See case studies",
     ctaNewsletter: "Join the newsletter",
     proofLabel: "In practice",
-    demo: {
-      badge: "demo",
-      file: "delivery_note.jpg",
-      register: "Delivery register",
-      rows: [
-        ["Aggregate 0–16", "24 t"],
-        ["Washed sand", "18 t"],
-        ["Transport", "2 trips"],
+    orbit: { inner: ["LLM", "Claude", "MCP"], outer: ["Agents", "Skills", "RAG", "Prompts"] },
+    story: {
+      heading: "What AI can do in your company.",
+      intro: "Four building blocks I use in every deployment.",
+      items: [
+        { key: "llm", title: "LLMs.", text: "Language models understand text, images and data. The foundation of every deployment." },
+        { key: "agents", title: "AI agents.", text: "They complete whole tasks end to end — not just answer questions." },
+        { key: "skills", title: "Claude Skills.", text: "Your company's know-how and procedures, written so AI does things your way." },
+        { key: "mcp", title: "MCP.", text: "AI connected to your systems and data — no copy-pasting into a chat." },
       ],
-      steps: ["Read", "Extract", "Check", "Save"],
+      ctaCaseStudies: "See it in real deployments",
+      ctaBlog: "Read the blog",
     },
   },
 
   caseStudies: {
     heading: "Case studies",
     intro: "Problem. Solution. Result.",
+    metaDescription: "AI deployments in Polish companies: problem, solution and measurable result — agents, Claude Skills, MCP and document automation.",
     problem: "Problem",
     solution: "Solution",
     result: "Result",

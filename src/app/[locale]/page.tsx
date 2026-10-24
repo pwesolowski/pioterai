@@ -2,11 +2,11 @@ import type { Metadata } from "next"
 import { siteConfig } from "@/config/site"
 import { isLocale, localizePath, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
-import { getCaseStudies, getPosts } from "@/lib/content"
+import { getPosts } from "@/lib/content"
 import { pageMetadata } from "@/lib/seo"
 import { Hero } from "@/components/home/hero"
 import { ProofBar } from "@/components/home/proof-bar"
-import { CaseStudyCard } from "@/components/home/case-study-card"
+import { AiStory } from "@/components/home/ai-story"
 import { LatestVideo } from "@/components/home/latest-video"
 import { NewsletterSection } from "@/components/home/newsletter-section"
 import { PostCard } from "@/components/blog/post-card"
@@ -28,7 +28,6 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params
   if (!isLocale(locale)) return null
   const t = getDictionary(locale)
-  const caseStudies = getCaseStudies(locale)
   const posts = getPosts(locale).slice(0, 3)
 
   return (
@@ -36,14 +35,7 @@ export default async function HomePage({ params }: Props) {
       <Hero locale={locale} />
       <ProofBar locale={locale} />
 
-      <section aria-labelledby="case-studies" className="container scroll-mt-20 py-20 md:py-32">
-        <SectionHeading id="case-studies" title={t.caseStudies.heading} intro={t.caseStudies.intro} />
-        <div className="grid gap-4 md:grid-cols-2">
-          {caseStudies.map((study, i) => (
-            <CaseStudyCard key={study.slug} study={study} locale={locale} index={i} />
-          ))}
-        </div>
-      </section>
+      <AiStory locale={locale} />
 
       <LatestVideo locale={locale} />
 

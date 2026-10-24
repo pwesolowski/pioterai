@@ -7,7 +7,18 @@ import { cn } from "@/lib/utils"
 import { CaseVisual } from "@/components/visuals"
 
 /** Kafel case study: tytuł, efekt w jednym zdaniu, ilustracja */
-export function CaseStudyCard({ study, locale, index = 0 }: { study: CaseStudy; locale: Locale; index?: number }) {
+export function CaseStudyCard({
+  study,
+  locale,
+  index = 0,
+  headingLevel = "h3",
+}: {
+  study: CaseStudy
+  locale: Locale
+  index?: number
+  headingLevel?: "h2" | "h3"
+}) {
+  const Heading = headingLevel
   const t = getDictionary(locale)
   const fm = study.frontmatter
 
@@ -21,11 +32,11 @@ export function CaseStudyCard({ study, locale, index = 0 }: { study: CaseStudy; 
       )}
     >
       {fm.tags?.length ? <p className="text-sm text-muted-foreground">{fm.tags.join(" · ")}</p> : null}
-      <h3 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl" lang={study.locale !== locale ? study.locale : undefined}>
+      <Heading className="mt-3 text-3xl font-semibold leading-tight md:text-4xl" lang={study.locale !== locale ? study.locale : undefined}>
         <Link href={localizePath(locale, `/case-studies/${study.slug}`)} className="after:absolute after:inset-0 after:content-['']">
           {fm.title}
         </Link>
-      </h3>
+      </Heading>
       <p className="mx-auto mt-3 line-clamp-2 max-w-md text-lg text-muted-foreground">{fm.result}</p>
       <span className="mt-4 inline-flex items-center justify-center gap-0.5 text-lg text-primary">
         {t.caseStudies.readMore} <ChevronRight className="size-5" aria-hidden />

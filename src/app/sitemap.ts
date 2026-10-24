@@ -15,7 +15,7 @@ function entry(path: string, available: readonly Locale[], lastModified?: string
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["/", "/blog", "/about"].flatMap((p) => entry(p, locales))
+  const pages = ["/", "/blog", "/case-studies", "/about"].flatMap((p) => entry(p, locales))
 
   const posts = getSlugs("posts").flatMap((slug) => {
     const post = getEntry<{ date: string; updated?: string }>("posts", slug, "pl")!.entry

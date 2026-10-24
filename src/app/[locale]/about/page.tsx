@@ -71,7 +71,7 @@ export default async function AboutPage({ params }: Props) {
       )}
 
       <nav aria-label={t.about.eyebrow} className="mt-12 flex max-w-3xl flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-6">
-        <Link href={`${localizePath(locale, "/")}#case-studies`} className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:underline">
+        <Link href={localizePath(locale, "/case-studies")} className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:underline">
           {t.about.seeCaseStudies} <ArrowRight className="size-4" aria-hidden />
         </Link>
         <Link href={localizePath(locale, "/blog/tags/ai-product-engineering")} className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:underline">

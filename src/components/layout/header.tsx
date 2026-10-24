@@ -27,7 +27,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
   const otherLocale: Locale = locale === "pl" ? "en" : "pl"
 
   const items = [
-    { label: labels.caseStudies, href: `${localizePath(locale, "/")}#case-studies`, active: internalPath.startsWith("/case-studies") },
+    { label: labels.caseStudies, href: localizePath(locale, "/case-studies"), active: internalPath.startsWith("/case-studies") },
     { label: labels.blog, href: localizePath(locale, "/blog"), active: internalPath.startsWith("/blog") },
     { label: labels.about, href: localizePath(locale, "/about"), active: internalPath === "/about" },
   ]

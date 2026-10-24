@@ -50,7 +50,7 @@ export default async function CaseStudyPage({ params }: Props) {
   return (
     <div className="container py-10 md:py-16">
       <Link
-        href={`${localizePath(locale, "/")}#case-studies`}
+        href={localizePath(locale, "/case-studies")}
         className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-primary"
       >
         <ArrowLeft className="size-4" aria-hidden /> {t.caseStudies.back}

@@ -27,7 +27,7 @@ export function DemoReplay({ children, interval = 7000 }: { children: React.Reac
   }, [interval])
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="w-full">
       <div key={run}>{children}</div>
     </div>
   )

@@ -212,6 +212,47 @@
   }
 }
 
+/* ---------- Orbity wokół zdjęcia w hero ---------- */
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-flow {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+@keyframes node-glow {
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in oklch, var(--primary) 15%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .orbit {
+    animation: orbit-spin var(--orbit-duration, 60s) linear infinite var(--orbit-direction, normal);
+  }
+
+  /* etykiety kręcą się w przeciwną stronę, więc zostają poziome */
+  .orbit-label {
+    animation: orbit-spin var(--orbit-duration, 60s) linear infinite reverse;
+    animation-direction: var(--orbit-label-direction, reverse);
+  }
+
+  .orbit-flow {
+    animation: orbit-flow 6s linear infinite;
+  }
+
+  .node-glow {
+    animation: node-glow 3s ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+}
+
 /* ---------- Typografia wpisów ---------- */
 
 .prose {

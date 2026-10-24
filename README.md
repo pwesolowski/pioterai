@@ -130,7 +130,6 @@ pyftsubset inst.ttf --flavor=woff2 --output-file=Inter-latin-pl.woff2 \
 - [ ] Szkic `content/posts/ai-product-engineer/*`: napisz wpis, usuń `draft: true` i podmień przykładowy `public/downloads/ai-product-engineer/SKILL.md`.
 - [ ] `src/config/tags.ts`: dopisz zdanie o tym, czego uczy seria AI Product Engineering.
 - [ ] Hasło EN w `src/i18n/dictionaries.ts` (`home.headline`): obecnie „AI that works in a real company”.
-- [ ] Animacja w hero (`home.demo` w `src/i18n/dictionaries.ts`): pozycje i ilości to ilustracja z etykietą „demo”. Podmień na zanonimizowany przykład z prawdziwego wdrożenia.
 - [ ] Case studies: pole `visual` (`document-flow` | `mcp-chat`) wybiera ilustrację na kaflu. Nowe ilustracje dodasz w `src/components/visuals/`.
 
 **Integracje i zasoby**
