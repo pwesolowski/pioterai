@@ -11,12 +11,16 @@ import { PostCard } from "@/components/blog/post-card"
 
 type Props = { params: Promise<{ locale: string; tag: string }> }
 
+// tagi z opisem w tagIntros mają stronę nawet bez wpisów (landing pod frazę)
 export function generateStaticParams() {
-  return locales.flatMap((locale) => getTags(locale).map((t) => ({ locale, tag: t.slug })))
+  return locales.flatMap((locale) => {
+    const slugs = new Set([...getTags(locale).map((t) => t.slug), ...Object.keys(tagIntros)])
+    return [...slugs].map((tag) => ({ locale, tag }))
+  })
 }
 
 function tagName(locale: Locale, slug: string) {
-  return getTags(locale).find((t) => t.slug === slug)?.tag
+  return getTags(locale).find((t) => t.slug === slug)?.tag ?? tagIntros[slug]?.[locale].title
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -64,6 +68,7 @@ export default async function TagPage({ params }: Props) {
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} locale={locale} />
         ))}
+        {posts.length === 0 && <p className="text-muted-foreground">{t.blog.noPosts}</p>}
       </div>
     </div>
   )
