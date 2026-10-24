@@ -37,7 +37,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/piotr-wesolowski/", // TODO: potwierdź URL (w starej nawigacji był też /in/piotrwesolowski)
     youtube: "https://www.youtube.com/@piotr-wesolowski",
     x: "", // TODO: URL profilu na X (pusty = pomijany w stopce i JSON-LD)
-    email: "contact@piotrwesolowski.com",
+    email: "kontakt@piotrwesolowski.com",
     calendly: "https://calendly.com/piowes30/30min/",
     personalSite: "https://piotrwesolowski.com",
   },
