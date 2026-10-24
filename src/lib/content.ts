@@ -36,6 +36,8 @@ export type CaseStudyFrontmatter = {
   tags?: string[]
   /** Kolejność na stronie głównej (rosnąco) */
   order?: number
+  /** Ilustracja na karcie: "document-flow" | "mcp-chat" */
+  visual?: string
   /** Szeroka karta w siatce bento */
   featured?: boolean
   date?: string

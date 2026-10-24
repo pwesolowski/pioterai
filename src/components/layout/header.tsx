@@ -27,26 +27,26 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
   const otherLocale: Locale = locale === "pl" ? "en" : "pl"
 
   const items = [
-    { label: labels.blog, href: localizePath(locale, "/blog"), active: internalPath.startsWith("/blog") },
     { label: labels.caseStudies, href: `${localizePath(locale, "/")}#case-studies`, active: internalPath.startsWith("/case-studies") },
+    { label: labels.blog, href: localizePath(locale, "/blog"), active: internalPath.startsWith("/blog") },
     { label: labels.about, href: localizePath(locale, "/about"), active: internalPath === "/about" },
   ]
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between gap-4">
-        <Link href={localizePath(locale, "/")} className="text-lg font-bold tracking-tight" onClick={() => setOpen(false)}>
+    <header className="sticky top-0 z-40 border-b border-border/50 bg-background/75 backdrop-blur-xl backdrop-saturate-150">
+      <div className="container flex h-14 items-center justify-between gap-4">
+        <Link href={localizePath(locale, "/")} className="font-semibold tracking-tight" onClick={() => setOpen(false)}>
           pioter<span className="text-primary">.ai</span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               aria-current={item.active ? "page" : undefined}
               className={cn(
-                "rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:text-foreground",
+                "text-[0.8125rem] transition-colors hover:text-foreground",
                 item.active ? "text-foreground" : "text-muted-foreground"
               )}
             >
@@ -55,11 +55,11 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
           ))}
         </nav>
 
-        <div className="flex items-center gap-1">
+        <div className="-mr-2 flex items-center">
           <Link
             href={localizePath(otherLocale, internalPath)}
             hrefLang={otherLocale}
-            className="inline-flex h-11 items-center rounded-lg px-3 font-mono text-sm font-semibold uppercase text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="inline-flex size-11 items-center justify-center text-xs font-semibold uppercase text-muted-foreground transition-colors hover:text-foreground"
             aria-label={labels.switchLanguage}
             title={labels.switchLanguage}
           >
@@ -68,30 +68,27 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
           <ThemeToggle label={labels.toggleTheme} />
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground md:hidden"
+            className="inline-flex size-11 items-center justify-center text-muted-foreground hover:text-foreground md:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? labels.closeMenu : labels.openMenu}
           >
-            {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
+            {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
           </button>
         </div>
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Main" className="border-t border-border/60 bg-background md:hidden">
-          <ul className="container flex flex-col py-2">
+        <nav id="mobile-nav" aria-label="Main" className="h-[calc(100dvh-3.5rem)] bg-background md:hidden">
+          <ul className="container flex flex-col gap-1 pt-6">
             {items.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
                   aria-current={item.active ? "page" : undefined}
-                  className={cn(
-                    "block py-3 text-lg font-medium",
-                    item.active ? "text-primary" : "text-foreground"
-                  )}
+                  className="block py-3 text-3xl font-semibold tracking-tight"
                 >
                   {item.label}
                 </Link>

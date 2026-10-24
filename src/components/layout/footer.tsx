@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Calendar, ExternalLink, Github, Linkedin, Mail, Rss, Youtube } from "lucide-react"
+import { Github, Linkedin, Rss, Youtube } from "lucide-react"
 import { siteConfig } from "@/config/site"
 import { localizePath, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
@@ -24,67 +24,57 @@ export function Footer({ locale }: { locale: Locale }) {
     { label: "RSS", href: localizePath(locale, "/feed.xml"), icon: Rss },
   ].filter((item) => item.href)
 
+  const contact = [
+    { label: links.email, href: `mailto:${links.email}` },
+    { label: t.footer.book, href: links.calendly },
+    { label: t.footer.services, href: links.personalSite },
+  ]
+
   return (
-    <footer className="mt-24 border-t">
-      <div className="container grid gap-10 py-12 md:grid-cols-[1.5fr_1fr_1fr]">
-        <div className="space-y-3">
-          <p className="text-lg font-bold">
+    <footer className="mt-16 border-t border-border/60 text-sm">
+      <div className="container flex flex-col gap-8 py-10 md:flex-row md:items-start md:justify-between">
+        <div className="space-y-1">
+          <p className="font-semibold">
             pioter<span className="text-primary">.ai</span>
           </p>
-          <p className="max-w-xs text-muted-foreground">{t.footer.tagline}</p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground">
             {siteConfig.author} · {siteConfig.identity.role}
           </p>
         </div>
 
-        <div>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-            {t.footer.contact}
-          </h2>
-          <ul className="space-y-1">
-            <li>
-              <a href={`mailto:${links.email}`} className="inline-flex min-h-11 items-center gap-2 hover:text-primary">
-                <Mail className="size-4" aria-hidden /> {links.email}
+        <ul className="flex flex-col gap-1 md:flex-row md:gap-6">
+          {contact.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener" : undefined}
+                className="inline-flex min-h-11 items-center text-muted-foreground transition-colors hover:text-foreground md:min-h-0"
+              >
+                {item.label}
               </a>
             </li>
-            <li>
-              <a href={links.calendly} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center gap-2 hover:text-primary">
-                <Calendar className="size-4" aria-hidden /> {t.footer.book}
-              </a>
-            </li>
-            <li>
-              <a href={links.personalSite} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center gap-2 hover:text-primary">
-                <ExternalLink className="size-4" aria-hidden /> {t.footer.services}
-              </a>
-            </li>
-          </ul>
-        </div>
+          ))}
+        </ul>
 
-        <div>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-            {t.footer.elsewhere}
-          </h2>
-          <ul className="flex flex-wrap gap-1">
-            {social.map(({ label, href, icon: Icon }) => (
-              <li key={label}>
-                <Link
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener me" : undefined}
-                  className="inline-flex size-11 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  aria-label={label}
-                  title={label}
-                >
-                  <Icon className="size-5" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="-ml-3 flex md:-mr-3 md:ml-0">
+          {social.map(({ label, href, icon: Icon }) => (
+            <li key={label}>
+              <Link
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener me" : undefined}
+                className="inline-flex size-11 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
+                aria-label={label}
+                title={label}
+              >
+                <Icon className="size-[1.1rem]" />
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="container border-t py-6 text-sm text-muted-foreground">
-        © {new Date().getFullYear()} {siteConfig.author}
-      </div>
+      <div className="container pb-10 text-muted-foreground">© {new Date().getFullYear()} {siteConfig.author}</div>
     </footer>
   )
 }

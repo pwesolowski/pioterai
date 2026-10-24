@@ -11,7 +11,7 @@ export function YouTubeEmbed({ id, title, playLabel }: { id: string; title: stri
   const [active, setActive] = useState(false)
 
   return (
-    <div className="relative aspect-video overflow-hidden rounded-2xl border bg-muted">
+    <div className="relative aspect-video overflow-hidden rounded-[2rem] bg-card">
       {active ? (
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`}

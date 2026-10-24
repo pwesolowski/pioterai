@@ -20,42 +20,54 @@ const pl = {
   home: {
     metaDescription:
       "AI Product Engineer — inżynier AI, który rozumie biznes. Wdrażam AI w polskich firmach: agenci, Claude Skills, MCP i automatyzacje na prawdziwych dokumentach — WZ, faktury, KSeF.",
-    headline: "AI, które działa w polskiej firmie",
-    subtitle:
-      "Pomagam właścicielom firm i zespołom wdrożyć AI praktycznie — agentów, Claude Skills i MCP pracujących na prawdziwych dokumentach: WZ, fakturach, KSeF i zleceniach.",
+    headline: "AI, które działa w polskiej firmie.",
+    /** końcówka nagłówka wyróżniona gradientem */
+    headlineEnd: "w polskiej firmie.",
+    subtitle: "Agenci, Claude Skills i MCP na prawdziwych dokumentach firmy.",
     ctaCaseStudies: "Zobacz case studies",
     ctaNewsletter: "Zapisz się na newsletter",
     proofLabel: "W praktyce",
+    // przykładowe dane w animacji hero — ilustracja, nie case klienta
+    demo: {
+      badge: "demo",
+      file: "wz_zdjecie.jpg",
+      register: "Rejestr WZ",
+      rows: [
+        ["Kruszywo 0–16", "24 t"],
+        ["Piasek płukany", "18 t"],
+        ["Transport", "2 kursy"],
+      ],
+      steps: ["Odczyt", "Pozycje", "Kontrola", "Zapis"],
+    },
   },
 
   caseStudies: {
     heading: "Case studies",
-    intro: "Konkretne problemy, konkretne wdrożenia. Problem → rozwiązanie → efekt.",
+    intro: "Problem. Rozwiązanie. Efekt.",
     problem: "Problem",
     solution: "Rozwiązanie",
     result: "Efekt",
-    readMore: "Szczegóły",
+    readMore: "Zobacz więcej",
     back: "Wszystkie case studies",
   },
 
   video: {
-    heading: "Najnowsze wideo",
-    intro: "Pokazuję wdrożenia od środka — kod, prompty i prawdziwe dokumenty.",
+    heading: "Zobacz, jak to działa.",
+    intro: "Wdrożenia od środka, na YouTube.",
     play: "Odtwórz wideo",
-    channel: "Zobacz kanał na YouTube",
+    channel: "Kanał YouTube",
     noVideo: "Nowe odcinki na kanale YouTube.",
   },
 
   latestPosts: {
-    heading: "Najnowsze wpisy",
+    heading: "Z bloga.",
     all: "Wszystkie wpisy",
   },
 
   newsletter: {
     heading: "Newsletter",
-    leadIntro: "Zapisz się i odbierz za darmo:",
-    description:
-      "Raz na jakiś czas: jedno wdrożenie, jeden skill, zero lania wody. Plus gotowe pliki SKILL.md do pobrania.",
+    leadIntro: "Za darmo w newsletterze",
+    description: "Gotowe pliki SKILL.md. Jedno wdrożenie w każdym wydaniu.",
     emailLabel: "Adres e-mail",
     placeholder: "twoj@email.pl",
     submit: "Zapisz mnie",
@@ -169,42 +181,52 @@ const en: Dictionary = {
   home: {
     metaDescription:
       "AI Product Engineer — an AI engineer who understands business. I deploy AI in Polish companies: agents, Claude Skills, MCP and automations on real documents — delivery notes, invoices, KSeF.",
-    headline: "AI that works in a real company",
-    subtitle:
-      "I help business owners and teams adopt AI in practice — agents, Claude Skills and MCP working on real documents: delivery notes, invoices, KSeF e-invoices and orders.",
+    headline: "AI that works in a real company.",
+    headlineEnd: "in a real company.",
+    subtitle: "Agents, Claude Skills and MCP on a company's real documents.",
     ctaCaseStudies: "See case studies",
     ctaNewsletter: "Join the newsletter",
     proofLabel: "In practice",
+    demo: {
+      badge: "demo",
+      file: "delivery_note.jpg",
+      register: "Delivery register",
+      rows: [
+        ["Aggregate 0–16", "24 t"],
+        ["Washed sand", "18 t"],
+        ["Transport", "2 trips"],
+      ],
+      steps: ["Read", "Extract", "Check", "Save"],
+    },
   },
 
   caseStudies: {
     heading: "Case studies",
-    intro: "Real problems, real deployments. Problem → solution → result.",
+    intro: "Problem. Solution. Result.",
     problem: "Problem",
     solution: "Solution",
     result: "Result",
-    readMore: "Details",
+    readMore: "Learn more",
     back: "All case studies",
   },
 
   video: {
-    heading: "Latest video",
-    intro: "Deployments from the inside — code, prompts and real documents.",
+    heading: "See how it works.",
+    intro: "Deployments from the inside, on YouTube.",
     play: "Play video",
-    channel: "Visit the YouTube channel",
+    channel: "YouTube channel",
     noVideo: "New episodes on the YouTube channel.",
   },
 
   latestPosts: {
-    heading: "Latest posts",
+    heading: "From the blog.",
     all: "All posts",
   },
 
   newsletter: {
     heading: "Newsletter",
-    leadIntro: "Subscribe and get it for free:",
-    description:
-      "Every now and then: one deployment, one skill, no fluff. Plus ready-to-use SKILL.md files.",
+    leadIntro: "Free in the newsletter",
+    description: "Ready-to-use SKILL.md files. One real deployment per issue.",
     emailLabel: "Email address",
     placeholder: "you@company.com",
     submit: "Subscribe",

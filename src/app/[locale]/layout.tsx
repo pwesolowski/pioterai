@@ -12,7 +12,7 @@ import { RevealObserver } from "@/components/layout/reveal-observer"
 import { JsonLd } from "@/components/json-ld"
 import { personSchema, websiteSchema } from "@/lib/schema"
 
-// Inter (zmienna 400–800) przycięty do łaciny + polskich znaków: 1 plik ~28 KB zamiast ~130 KB z Google Fonts.
+// Inter (osie wght 400–800 i opsz 14–32) przycięty do łaciny + polskich znaków: 1 plik ~44 KB.
 // Jak odtworzyć subset: README → „Font”.
 const inter = localFont({
   src: "../../assets/fonts/Inter-latin-pl.woff2",

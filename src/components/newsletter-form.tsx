@@ -49,7 +49,7 @@ export function NewsletterForm({ labels, onSubscribe }: Props) {
 
   if (status === "success") {
     return (
-      <p role="status" className="flex items-center gap-2 rounded-xl bg-primary/10 p-4 font-medium">
+      <p role="status" className="flex items-center justify-center gap-2 rounded-full bg-primary/10 p-4 font-medium">
         <Check className="size-5 text-primary" aria-hidden /> {message}
       </p>
     )
@@ -70,18 +70,18 @@ export function NewsletterForm({ labels, onSubscribe }: Props) {
           inputMode="email"
           placeholder={labels.placeholder}
           aria-describedby="newsletter-message"
-          className="h-12 min-w-0 flex-1 rounded-lg border bg-background px-4 text-base placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+          className="h-12 min-w-0 flex-1 rounded-full border border-border bg-background px-5 text-base placeholder:text-muted-foreground focus:border-primary focus:outline-none"
         />
         <button
           type="submit"
           disabled={status === "pending"}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-medium text-primary-foreground transition-transform hover:scale-[1.03] disabled:opacity-60"
         >
           {status === "pending" ? labels.submitting : labels.submit}
           <ArrowRight className="size-4" aria-hidden />
         </button>
       </div>
-      <p id="newsletter-message" aria-live="polite" className="text-sm text-muted-foreground">
+      <p id="newsletter-message" aria-live="polite" className="text-center text-sm text-muted-foreground">
         {status === "error" ? <span className="text-foreground">{message}</span> : labels.privacy}
       </p>
     </form>

@@ -36,11 +36,11 @@ export default async function HomePage({ params }: Props) {
       <Hero locale={locale} />
       <ProofBar locale={locale} />
 
-      <section aria-labelledby="case-studies" className="container scroll-mt-24 py-14 md:py-20">
+      <section aria-labelledby="case-studies" className="container scroll-mt-20 py-20 md:py-32">
         <SectionHeading id="case-studies" title={t.caseStudies.heading} intro={t.caseStudies.intro} />
-        <div className="grid gap-5 md:grid-cols-3">
-          {caseStudies.map((study) => (
-            <CaseStudyCard key={study.slug} study={study} locale={locale} />
+        <div className="grid gap-4 md:grid-cols-2">
+          {caseStudies.map((study, i) => (
+            <CaseStudyCard key={study.slug} study={study} locale={locale} index={i} />
           ))}
         </div>
       </section>
@@ -48,15 +48,15 @@ export default async function HomePage({ params }: Props) {
       <LatestVideo locale={locale} />
 
       {posts.length > 0 && (
-        <section aria-labelledby="latest-posts" className="container py-14 md:py-20" data-reveal>
+        <section aria-labelledby="latest-posts" className="container py-20 md:py-32">
           <SectionHeading
             id="latest-posts"
             title={t.latestPosts.heading}
             link={{ href: localizePath(locale, "/blog"), label: t.latestPosts.all }}
           />
-          <div className="grid gap-5 md:grid-cols-3">
-            {posts.map((post) => (
-              <PostCard key={post.slug} post={post} locale={locale} headingLevel="h3" />
+          <div className="grid gap-4 md:grid-cols-3">
+            {posts.map((post, i) => (
+              <PostCard key={post.slug} post={post} locale={locale} headingLevel="h3" index={i} />
             ))}
           </div>
         </section>
