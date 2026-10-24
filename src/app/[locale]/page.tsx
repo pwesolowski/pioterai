@@ -4,14 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, Github, Linkedin, Mail, Play, FileText, Calendar, Youtube } from "lucide-react";
 
-import IntroBanner from "@/components/IntroBanner";
 
 export default function Home() {
     return (
         <div className="flex flex-col items-center w-full">
-            <div className="container px-4 md:px-6 pt-24">
-                <IntroBanner />
-            </div>
             {/* Hero Section */}
             <section className="w-full pb-20 pt-10 md:pb-32 md:pt-16 lg:pb-48 lg:pt-24 relative overflow-hidden">
                 {/* Gradient Background Blob */}
