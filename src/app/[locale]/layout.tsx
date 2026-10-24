@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import "../globals.css"
 import { siteConfig } from "@/config/site"
 import { isLocale, localizePath, locales } from "@/i18n/config"
@@ -11,10 +11,15 @@ import { ThemeProvider } from "@/components/layout/theme-provider"
 import { RevealObserver } from "@/components/layout/reveal-observer"
 import { JsonLd } from "@/components/json-ld"
 import { personSchema, websiteSchema } from "@/lib/schema"
-import { cn } from "@/lib/utils"
 
-const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" })
-const mono = JetBrains_Mono({ subsets: ["latin", "latin-ext"], variable: "--font-jetbrains", display: "swap" })
+// Inter (zmienna 400–800) przycięty do łaciny + polskich znaków: 1 plik ~28 KB zamiast ~130 KB z Google Fonts.
+// Jak odtworzyć subset: README → „Font”.
+const inter = localFont({
+  src: "../../assets/fonts/Inter-latin-pl.woff2",
+  weight: "400 800",
+  variable: "--font-inter",
+  display: "swap",
+})
 
 type Props = { children: React.ReactNode; params: Promise<{ locale: string }> }
 
@@ -60,7 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       data-accent={siteConfig.accent}
-      className={cn(inter.variable, mono.variable)}
+      className={inter.variable}
       suppressHydrationWarning
     >
       <head>

@@ -9,6 +9,7 @@ import { getDictionary } from "@/i18n/dictionaries"
 import { CodeBlock } from "@/components/mdx/code-block"
 import { Download } from "@/components/mdx/download"
 import { Callout } from "@/components/mdx/callout"
+import { MdxImage } from "@/components/mdx/mdx-image"
 
 const prettyCode: PrettyCodeOptions = {
   theme: { light: "github-light", dark: "github-dark-dimmed" },
@@ -28,8 +29,7 @@ function components(locale: Locale) {
       ) : (
         <a href={href} target="_blank" rel="noopener" {...props} />
       ),
-    // eslint-disable-next-line @next/next/no-img-element
-    img: ({ alt = "", ...props }: React.ComponentProps<"img">) => <img alt={alt} loading="lazy" decoding="async" {...props} />,
+    img: MdxImage,
     Download: (props: Omit<React.ComponentProps<typeof Download>, "label">) => (
       <Download label={t.download.label} {...props} />
     ),
