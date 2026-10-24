@@ -1,53 +1,132 @@
-import { getPostBySlug, getPostSlugs } from "@/lib/mdx"
-import { MDXRemote } from "next-mdx-remote/rsc"
+import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { notFound } from "next/navigation"
+import { ArrowLeft, Languages } from "lucide-react"
+import { siteConfig } from "@/config/site"
+import { isLocale, localizePath, locales, type Locale } from "@/i18n/config"
+import { getDictionary } from "@/i18n/dictionaries"
+import { getPost, getSlugs, getToc, readingTime } from "@/lib/content"
+import { renderMDX } from "@/lib/mdx"
+import { pageMetadata } from "@/lib/seo"
+import { articleSchema } from "@/lib/schema"
+import { formatDate } from "@/lib/utils"
+import { JsonLd } from "@/components/json-ld"
+import { TagList } from "@/components/blog/tag-list"
+import { Toc } from "@/components/blog/toc"
+import { SeriesNav } from "@/components/blog/series-nav"
 
-export async function generateStaticParams() {
-    const posts = getPostSlugs()
-    return posts.map((post) => ({
-        slug: post.replace(/\.mdx$/, ""),
-    }))
+type Props = { params: Promise<{ locale: string; slug: string }> }
+
+// każdy wpis generujemy w obu językach — brakująca wersja pokazuje oryginał z informacją
+export function generateStaticParams() {
+  return locales.flatMap((locale) => getSlugs("posts").map((slug) => ({ locale, slug })))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params
-    const post = getPostBySlug(slug)
-    return {
-        title: `${post.metadata.title} - Pioter.ai`,
-        description: post.metadata.excerpt,
-    }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = (await params) as { locale: Locale; slug: string }
+  const result = getPost(slug, locale)
+  if (!result) return {}
+  const { entry, isFallback } = result
+  const fm = entry.frontmatter
+
+  return pageMetadata({
+    locale,
+    title: fm.title,
+    description: fm.excerpt,
+    path: `/blog/${slug}`,
+    availableLocales: entry.availableLocales,
+    type: "article",
+    publishedTime: fm.date,
+    modifiedTime: fm.updated,
+    tags: fm.tags,
+    // wersja „zastępcza” nie jest indeksowana, kanoniczny jest oryginał
+    noindex: isFallback || fm.draft,
+    canonicalLocale: entry.locale,
+  })
 }
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params
-    const post = getPostBySlug(slug)
+export default async function PostPage({ params }: Props) {
+  const { locale, slug } = await params
+  if (!isLocale(locale)) notFound()
+  const result = getPost(slug, locale)
+  if (!result) notFound()
 
-    return (
-        <article className="container max-w-3xl py-12 md:py-24 lg:py-32">
-            <Link href="/blog">
-                <Button variant="ghost" className="mb-8 pl-0 hover:bg-transparent hover:text-primary">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to Blog
-                </Button>
-            </Link>
-            <div className="space-y-4">
-                <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-                    {post.metadata.title}
-                </h1>
-                <p className="text-xl text-muted-foreground">
-                    {new Date(post.metadata.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                    })}
-                </p>
+  const { entry: post, isFallback } = result
+  const fm = post.frontmatter
+  const t = getDictionary(locale)
+  const content = await renderMDX(post.content, post.locale)
+  const toc = getToc(post.content)
+  const url = `${siteConfig.url}${localizePath(post.locale, `/blog/${slug}`)}`
+
+  return (
+    <div className="container py-10 md:py-16">
+      <Link
+        href={localizePath(locale, "/blog")}
+        className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-primary"
+      >
+        <ArrowLeft className="size-4" aria-hidden /> {t.blog.backToBlog}
+      </Link>
+
+      {isFallback && (
+        <div role="note" className="mt-4 flex gap-3 rounded-xl border border-primary/40 bg-primary/5 p-4">
+          <Languages className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+          <p>
+            <strong>{t.blog.onlyIn(t.inLanguage[post.locale])}</strong> {t.blog.fallbackHint}
+          </p>
+        </div>
+      )}
+
+      <div className="mt-6 grid gap-12 lg:grid-cols-[minmax(0,1fr)_15rem]">
+        <article lang={post.locale} className="min-w-0 max-w-3xl">
+          <header className="space-y-5">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+              <time dateTime={fm.date}>{formatDate(fm.date, locale)}</time>
+              <span aria-hidden>·</span>
+              <span>{t.blog.readingTime(readingTime(post.content))}</span>
+              {fm.updated && (
+                <>
+                  <span aria-hidden>·</span>
+                  <span>
+                    {t.blog.updated} <time dateTime={fm.updated}>{formatDate(fm.updated, locale)}</time>
+                  </span>
+                </>
+              )}
             </div>
-            <hr className="my-8" />
-            <div className="prose max-w-none prose-headings:!text-foreground prose-p:!text-foreground prose-li:!text-foreground prose-strong:!text-foreground prose-a:!text-foreground">
-                <MDXRemote source={post.content} />
-            </div>
+            <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+              {fm.title}
+            </h1>
+            <p className="text-lg text-muted-foreground md:text-xl">{fm.excerpt}</p>
+            <TagList tags={fm.tags} locale={locale} />
+          </header>
+
+          <SeriesNav post={post} locale={locale} />
+
+          <div className="mt-8 lg:hidden">
+            <Toc items={toc} title={t.blog.toc} variant="mobile" />
+          </div>
+
+          <div className="prose prose-lg mt-8 max-w-none prose-headings:scroll-mt-24 prose-headings:tracking-tight">
+            {content}
+          </div>
         </article>
-    )
+
+        <aside className="hidden lg:block">
+          <Toc items={toc} title={t.blog.toc} variant="desktop" />
+        </aside>
+      </div>
+
+      <JsonLd
+        data={articleSchema({
+          title: fm.title,
+          description: fm.excerpt,
+          url,
+          image: `${url}/opengraph-image`,
+          datePublished: fm.date,
+          dateModified: fm.updated,
+          locale: post.locale,
+          tags: fm.tags,
+        })}
+      />
+    </div>
+  )
 }

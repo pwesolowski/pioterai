@@ -2,7 +2,8 @@ import type { Locale } from "./config"
 
 const pl = {
   languageName: "Polski",
-  inLanguage: "po polsku",
+  /** „dostępny tylko …” */
+  inLanguage: { pl: "po polsku", en: "po angielsku" } as Record<Locale, string>,
   skipToContent: "Przejdź do treści",
 
   nav: {
@@ -151,7 +152,7 @@ export type Dictionary = typeof pl
 
 const en: Dictionary = {
   languageName: "English",
-  inLanguage: "in English",
+  inLanguage: { pl: "in Polish", en: "in English" },
   skipToContent: "Skip to content",
 
   nav: {
