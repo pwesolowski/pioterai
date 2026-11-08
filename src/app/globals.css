@@ -253,6 +253,79 @@
   }
 }
 
+/* ---------- Pasek logotypów technologii ---------- */
+
+.marquee-row {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-group {
+  display: flex;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.tech-chip {
+  transition:
+    transform 0.3s cubic-bezier(0.3, 1.5, 0.5, 1),
+    box-shadow 0.3s ease;
+}
+
+.tech-chip:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--brand) 60%, transparent),
+    0 8px 24px -8px color-mix(in oklch, var(--brand) 60%, transparent);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-track[data-reverse] {
+    animation-direction: reverse;
+    animation-duration: 48s;
+  }
+
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row {
+    mask-image: none;
+  }
+
+  .marquee-track {
+    width: auto;
+    justify-content: center;
+  }
+
+  .marquee-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline: 1rem;
+  }
+
+  .marquee-group[data-copy],
+  .marquee-group [data-extra] {
+    display: none;
+  }
+}
+
 /* ---------- Typografia wpisów ---------- */
 
 .prose {

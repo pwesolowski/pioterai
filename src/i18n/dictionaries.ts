@@ -21,19 +21,9 @@ const pl = {
     metaDescription:
       "AI Product Engineer — inżynier AI, który rozumie biznes. Wdrażam AI w polskich firmach: agenci, Claude Skills, MCP i automatyzacje na prawdziwych dokumentach — WZ, faktury, KSeF.",
     subtitle: "Wdrażam AI w polskich firmach.",
-    ctaNewsletter: "Zapisz się na newsletter",
     /** etykiety na orbitach wokół zdjęcia w hero */
     orbit: { inner: ["LLM", "Claude", "MCP"], outer: ["Agenci", "Skills", "RAG", "Prompty"] },
-    // sekcja „opowieść o AI” na stronie głównej
-    story: {
-      heading: "Z tego buduję.",
-      items: [
-        { key: "llm", title: "LLM." },
-        { key: "agents", title: "Agenci AI." },
-        { key: "skills", title: "Claude Skills." },
-        { key: "mcp", title: "MCP." },
-      ],
-    },
+    stackLabel: "Technologie, z którymi pracuję",
   },
 
   caseStudies: {
@@ -178,17 +168,8 @@ const en: Dictionary = {
     metaDescription:
       "AI Product Engineer — an AI engineer who understands business. I deploy AI in Polish companies: agents, Claude Skills, MCP and automations on real documents — delivery notes, invoices, KSeF.",
     subtitle: "I deploy AI in companies.",
-    ctaNewsletter: "Join the newsletter",
     orbit: { inner: ["LLM", "Claude", "MCP"], outer: ["Agents", "Skills", "RAG", "Prompts"] },
-    story: {
-      heading: "What I build with.",
-      items: [
-        { key: "llm", title: "LLMs." },
-        { key: "agents", title: "AI agents." },
-        { key: "skills", title: "Claude Skills." },
-        { key: "mcp", title: "MCP." },
-      ],
-    },
+    stackLabel: "Technologies I work with",
   },
 
   caseStudies: {

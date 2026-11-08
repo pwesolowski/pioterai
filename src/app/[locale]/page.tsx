@@ -5,9 +5,8 @@ import { getDictionary } from "@/i18n/dictionaries"
 import { getPosts } from "@/lib/content"
 import { pageMetadata } from "@/lib/seo"
 import { Hero } from "@/components/home/hero"
-import { AiStory } from "@/components/home/ai-story"
+import { TechLogos } from "@/components/home/tech-logos"
 import { LatestVideo } from "@/components/home/latest-video"
-import { NewsletterSection } from "@/components/home/newsletter-section"
 import { PostCard } from "@/components/blog/post-card"
 import { SectionHeading } from "@/components/section-heading"
 
@@ -33,7 +32,7 @@ export default async function HomePage({ params }: Props) {
     <>
       <Hero locale={locale} />
 
-      <AiStory locale={locale} />
+      <TechLogos locale={locale} />
 
       {siteConfig.youtube.latestVideoId && <LatestVideo locale={locale} />}
 
@@ -51,8 +50,6 @@ export default async function HomePage({ params }: Props) {
           </div>
         </section>
       )}
-
-      <NewsletterSection locale={locale} />
     </>
   )
 }

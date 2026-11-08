@@ -1,3 +1,4 @@
+import { Mail } from "lucide-react"
 import { siteConfig } from "@/config/site"
 import type { Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/dictionaries"
@@ -21,10 +22,11 @@ export function Hero({ locale }: { locale: Locale }) {
 
           <div className="mt-9 flex justify-center md:justify-start">
             <a
-              href="#newsletter"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 font-medium text-primary-foreground transition-transform hover:scale-[1.03]"
+              href={`mailto:${siteConfig.links.email}`}
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 font-medium text-primary-foreground transition-transform hover:scale-[1.03]"
             >
-              {t.home.ctaNewsletter}
+              <Mail className="size-5" aria-hidden />
+              {siteConfig.links.email}
             </a>
           </div>
         </div>
