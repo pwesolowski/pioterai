@@ -15,7 +15,7 @@ npm run lint
 
 | Co | Gdzie |
 |---|---|
-| Linki, rola, pasek dowodów, ID wideo, lead magnet, kolor akcentu | `src/config/site.ts` |
+| Linki, rola, ID wideo, lead magnet, kolor akcentu | `src/config/site.ts` |
 | Opisy stron tagów pod frazy SEO (np. „AI Product Engineering”) | `src/config/tags.ts` |
 | Teksty interfejsu PL/EN | `src/i18n/dictionaries.ts` |
 | Wpisy bloga | `content/posts/<slug>/<pl\|en>.mdx` |
@@ -120,7 +120,6 @@ pyftsubset inst.ttf --flavor=woff2 --output-file=Inter-latin-pl.woff2 \
 - [ ] `identity.tagline.en`: zatwierdź tłumaczenie „an AI engineer who understands business”.
 - [ ] `links.linkedin`: potwierdź URL (w starej wersji strony były dwa różne).
 - [ ] `links.x`: URL profilu na X (pusty jest pomijany w stopce i JSON-LD).
-- [ ] `proofBar`: konkretne dowody zamiast placeholderów.
 - [ ] `youtube.latestVideoId` i `latestVideoTitle`.
 - [ ] `newsletter.leadMagnet.en`: zatwierdź tłumaczenie.
 

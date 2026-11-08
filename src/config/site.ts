@@ -1,6 +1,6 @@
 /**
  * Jedno miejsce na dane, które zmieniasz ręcznie: tożsamość, linki,
- * pasek dowodów, wideo, newsletter. Wszystko oznaczone TODO czeka
+ * wideo, newsletter. Wszystko oznaczone TODO czeka
  * na uzupełnienie.
  */
 
@@ -40,12 +40,6 @@ export const siteConfig = {
     email: "kontakt@piotrwesolowski.com",
     calendly: "https://calendly.com/piowes30/30min/",
     personalSite: "https://piotrwesolowski.com",
-  },
-
-  /** Pasek dowodów pod hero — krótkie konkrety */
-  proofBar: {
-    pl: ["Systemy w produkcji", "Claude Skills", "MCP", "KSeF"], // TODO: uzupełnij konkretami
-    en: ["Systems in production", "Claude Skills", "MCP", "KSeF"], // TODO
   },
 
   youtube: {

@@ -5,7 +5,6 @@ import { getDictionary } from "@/i18n/dictionaries"
 import { getPosts } from "@/lib/content"
 import { pageMetadata } from "@/lib/seo"
 import { Hero } from "@/components/home/hero"
-import { ProofBar } from "@/components/home/proof-bar"
 import { AiStory } from "@/components/home/ai-story"
 import { LatestVideo } from "@/components/home/latest-video"
 import { NewsletterSection } from "@/components/home/newsletter-section"
@@ -33,11 +32,10 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <Hero locale={locale} />
-      <ProofBar locale={locale} />
 
       <AiStory locale={locale} />
 
-      <LatestVideo locale={locale} />
+      {siteConfig.youtube.latestVideoId && <LatestVideo locale={locale} />}
 
       {posts.length > 0 && (
         <section aria-labelledby="latest-posts" className="container py-20 md:py-32">

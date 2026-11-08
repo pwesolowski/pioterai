@@ -20,27 +20,19 @@ const pl = {
   home: {
     metaDescription:
       "AI Product Engineer — inżynier AI, który rozumie biznes. Wdrażam AI w polskich firmach: agenci, Claude Skills, MCP i automatyzacje na prawdziwych dokumentach — WZ, faktury, KSeF.",
-    headline: "AI, które działa w polskiej firmie.",
-    /** końcówka nagłówka wyróżniona gradientem */
-    headlineEnd: "w polskiej firmie.",
-    subtitle: "Agenci, Claude Skills i MCP na prawdziwych dokumentach firmy.",
-    ctaCaseStudies: "Zobacz case studies",
+    subtitle: "Wdrażam AI w polskich firmach.",
     ctaNewsletter: "Zapisz się na newsletter",
-    proofLabel: "W praktyce",
     /** etykiety na orbitach wokół zdjęcia w hero */
     orbit: { inner: ["LLM", "Claude", "MCP"], outer: ["Agenci", "Skills", "RAG", "Prompty"] },
     // sekcja „opowieść o AI” na stronie głównej
     story: {
-      heading: "Co AI może zrobić w Twojej firmie.",
-      intro: "Cztery klocki, z których buduję wdrożenia.",
+      heading: "Z tego buduję.",
       items: [
-        { key: "llm", title: "LLM.", text: "Modele językowe rozumieją tekst, obrazy i dane. Fundament każdego wdrożenia." },
-        { key: "agents", title: "Agenci AI.", text: "Wykonują całe zadania od początku do końca — nie tylko odpowiadają na pytania." },
-        { key: "skills", title: "Claude Skills.", text: "Wiedza i procedury Twojej firmy zapisane tak, żeby AI robiło to po Waszemu." },
-        { key: "mcp", title: "MCP.", text: "AI podłączone do Twoich systemów i danych — bez kopiowania do czatu." },
+        { key: "llm", title: "LLM." },
+        { key: "agents", title: "Agenci AI." },
+        { key: "skills", title: "Claude Skills." },
+        { key: "mcp", title: "MCP." },
       ],
-      ctaCaseStudies: "Zobacz to we wdrożeniach",
-      ctaBlog: "Czytaj na blogu",
     },
   },
 
@@ -71,7 +63,7 @@ const pl = {
   newsletter: {
     heading: "Newsletter",
     leadIntro: "Za darmo w newsletterze",
-    description: "Gotowe pliki SKILL.md. Jedno wdrożenie w każdym wydaniu.",
+    description: "Gotowe pliki SKILL.md.",
     emailLabel: "Adres e-mail",
     placeholder: "twoj@email.pl",
     submit: "Zapisz mnie",
@@ -185,24 +177,17 @@ const en: Dictionary = {
   home: {
     metaDescription:
       "AI Product Engineer — an AI engineer who understands business. I deploy AI in Polish companies: agents, Claude Skills, MCP and automations on real documents — delivery notes, invoices, KSeF.",
-    headline: "AI that works in a real company.",
-    headlineEnd: "in a real company.",
-    subtitle: "Agents, Claude Skills and MCP on a company's real documents.",
-    ctaCaseStudies: "See case studies",
+    subtitle: "I deploy AI in companies.",
     ctaNewsletter: "Join the newsletter",
-    proofLabel: "In practice",
     orbit: { inner: ["LLM", "Claude", "MCP"], outer: ["Agents", "Skills", "RAG", "Prompts"] },
     story: {
-      heading: "What AI can do in your company.",
-      intro: "Four building blocks I use in every deployment.",
+      heading: "What I build with.",
       items: [
-        { key: "llm", title: "LLMs.", text: "Language models understand text, images and data. The foundation of every deployment." },
-        { key: "agents", title: "AI agents.", text: "They complete whole tasks end to end — not just answer questions." },
-        { key: "skills", title: "Claude Skills.", text: "Your company's know-how and procedures, written so AI does things your way." },
-        { key: "mcp", title: "MCP.", text: "AI connected to your systems and data — no copy-pasting into a chat." },
+        { key: "llm", title: "LLMs." },
+        { key: "agents", title: "AI agents." },
+        { key: "skills", title: "Claude Skills." },
+        { key: "mcp", title: "MCP." },
       ],
-      ctaCaseStudies: "See it in real deployments",
-      ctaBlog: "Read the blog",
     },
   },
 
@@ -233,7 +218,7 @@ const en: Dictionary = {
   newsletter: {
     heading: "Newsletter",
     leadIntro: "Free in the newsletter",
-    description: "Ready-to-use SKILL.md files. One real deployment per issue.",
+    description: "Ready-to-use SKILL.md files.",
     emailLabel: "Email address",
     placeholder: "you@company.com",
     submit: "Subscribe",
